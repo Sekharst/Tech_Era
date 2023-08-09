@@ -1,20 +1,20 @@
 import {Link} from 'react-router-dom'
 
-import {Ci, Cn, Li} from './style'
+// import {Ci, Cn, Li} from './style'
 
 import './index.css'
 
 const Item = props => {
   const {details} = props
   const {id, name, logoUrl} = details
-  console.log('adjf')
+
   return (
-    <Li>
+    <li className="list-container">
       <Link to={`/courses/${id}`} className="link-el">
-        <Ci src={logoUrl} alt={name} />
-        <Cn>{name}</Cn>
+        <img className="images" src={logoUrl} alt={name} />
+        <p className="paras">{name}</p>
       </Link>
-    </Li>
+    </li>
   )
 }
 

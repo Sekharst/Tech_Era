@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 import Loader from 'react-loader-spinner'
 
-import {Nel, Logo, FailCon, FailIm, Fh, Fp, Fb, ListCon} from './style'
+// import {Nel, Logo, FailCon, FailIm, Fh, Fp, Fb, ListCon} from './style'
 
 import Item from '../Item'
 
@@ -56,11 +56,11 @@ class CourseItem extends Component {
     return (
       <div className="s-con">
         <h1 className="header">Courses</h1>
-        <ListCon>
+        <ul className="ulList">
           {courseList.map(i => (
             <Item details={i} key={i.id} />
           ))}
-        </ListCon>
+        </ul>
       </div>
     )
   }
@@ -68,24 +68,28 @@ class CourseItem extends Component {
   failView = () => (
     <div>
       <Link to="/" className="link-el">
-        <Nel>
-          <Logo
+        <navbar className="nav">
+          <img
+            className="logo"
             src="https://assets.ccbp.in/frontend/react-js/tech-era/website-logo-img.png"
             alt="website logo"
           />
-        </Nel>
+        </navbar>
       </Link>
-      <FailCon>
-        <FailIm
+      <div className="fail-container">
+        <img
+          className="failImage"
           src="https://assets.ccbp.in/frontend/react-js/tech-era/failure-img.png"
           alt="failure view"
         />
-        <Fh>Oops! Something Went wRONG</Fh>
-        <Fp>We cannot seem to find the page you are looking for</Fp>
-        <Fb type="button" onClick={this.getData}>
+        <h1 className="fail-head">Oops! Something Went Wrong</h1>
+        <p className="fail-para">
+          We cannot seem to find the page you are looking for
+        </p>
+        <button className="fail-button" type="button" onClick={this.getData}>
           Retry
-        </Fb>
-      </FailCon>
+        </button>
+      </div>
     </div>
   )
 
@@ -107,12 +111,13 @@ class CourseItem extends Component {
     return (
       <div>
         <Link to="/" className="link-el">
-          <Nel>
-            <Logo
+          <navbar className="nav">
+            <img
+              className="logo"
               src="https://assets.ccbp.in/frontend/react-js/tech-era/website-logo-img.png"
               alt="website logo"
             />
-          </Nel>
+          </navbar>
         </Link>
         {this.finalRender()}
       </div>

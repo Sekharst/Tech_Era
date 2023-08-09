@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 import Loader from 'react-loader-spinner'
 
-import {Nel, Logo, View, Vi, Vd, FailCon, FailIm, Fh, Fp, Fb, Vh} from './style'
+// import {Nel, Logo, View, Vi, Vd, FailCon, FailIm, Fh, Fp, Fb, Vh} from './style'
 
 import './index.css'
 
@@ -28,6 +28,7 @@ class CourseItemDetails extends Component {
     const {match} = this.props
     const {params} = match
     const {id} = params
+    console.log(id)
     const url = `https://apis.ccbp.in/te/courses/${id}`
     const options = {
       method: 'Get',
@@ -51,13 +52,13 @@ class CourseItemDetails extends Component {
     const {course} = this.state
     return (
       <div className="cr">
-        <View>
-          <Vi src={course.imageUrl} alt={course.name} />
+        <div className="container">
+          <img className="image" src={course.imageUrl} alt={course.name} />
           <div>
-            <Vh>{course.name}</Vh>
-            <Vd>{course.description}</Vd>
+            <h1 className="heading">{course.name}</h1>
+            <p className="description">{course.description}</p>
           </div>
-        </View>
+        </div>
       </div>
     )
   }
@@ -71,24 +72,28 @@ class CourseItemDetails extends Component {
   failView = () => (
     <div>
       <Link to="/" className="link-el">
-        <Nel>
-          <Logo
+        <navbar className="nav-container">
+          <img
+            className="logo"
             src="https://assets.ccbp.in/frontend/react-js/tech-era/website-logo-img.png"
             alt="website logo"
           />
-        </Nel>
+        </navbar>
       </Link>
-      <FailCon>
-        <FailIm
+      <div className="fail-container">
+        <img
+          className="fail-img"
           src="https://assets.ccbp.in/frontend/react-js/tech-era/failure-img.png"
           alt="failure view"
         />
-        <Fh>Oops! Something Went wRONG</Fh>
-        <Fp>We cannot seem to find the page you are looking for</Fp>
-        <Fb type="button" onClick={this.getItem}>
+        <h1 className="fail-head">Oops! Something Went wRONG</h1>
+        <p className="fail-para">
+          We cannot seem to find the page you are looking for
+        </p>
+        <button className="fail-button" type="button" onClick={this.getItem}>
           Retry
-        </Fb>
-      </FailCon>
+        </button>
+      </div>
     </div>
   )
 
@@ -110,12 +115,13 @@ class CourseItemDetails extends Component {
     return (
       <div>
         <Link to="/" className="link-el">
-          <Nel>
-            <Logo
+          <navbar className="nav-container">
+            <img
+              className="logo"
               src="https://assets.ccbp.in/frontend/react-js/tech-era/website-logo-img.png"
               alt="website logo"
             />
-          </Nel>
+          </navbar>
         </Link>
         <div>{this.finalRender()}</div>
       </div>
